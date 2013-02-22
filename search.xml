@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/">
+    <ShortName>Example Engine</ShortName>
+    <Description>Example search engine</Description>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Image width="16" height="16" type="image/png">data:image/png;base64,
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAYagMeiWXwAAAAJiS0dE
+        AP+Hj8y/AAAACW9GRnMAAAAgAAAAAADdhrP4AAAACXZwQWcAAAAwAAAAEABbaqj1AAABUklEQVQo
+        z4XRP0jUcRzG8dfvd4dEdymR3WBdCpYIIjS0NARNQeZeODXYUlBQ4dIk0SIVJDgGTXHQ2h8IgkSI
+        BMeg0rSTuwiSBtOL6vx9vw1XBzf5fJZnePg8PLzZRcl/c7/ssnGDWPXM3PVaR+De+eRhf6GgaFvJ
+        a7Fh8kalHbh7ofB4LNlnyQfBIeu6NGOcuFkhYeZw8n6iWBL98Mo66DZkqWF4qp4Sr/YVewXfPVIV
+        RdGmnLQQr5ESxnuteeOJptC+T84I58gTj1Ut2+oY1+OEA+JQ60Nzw6YgyAu69QiOG/BHaJInrBlh
+        1EH7LSpZFuR9UxNWWxXPjQw6KYfTFmzhpX6fedGqmA3bK1ZkMnsdURSkNoRGeEDKdD1einFRJoqO
+        2jGg7GeMk9N1cjD/7tTHX2e/dv32xVt7ZKqN7OLtSgesW2VX2rCemrtT243zP/0FuyeC3bHTKo4A
+        AAAldEVYdGRhdGU6Y3JlYXRlADIwMTMtMDItMjFUMTc6NDY6NDYtMDg6MDDkLeHxAAAAJXRFWHRk
+        YXRlOm1vZGlmeQAyMDEzLTAyLTIxVDE3OjQ2OjQ2LTA4OjAwlXBZTQAAABl0RVh0U29mdHdhcmUA
+        QWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAASUVORK5CYII=
+    </Image>
+    <Url type="application/x-suggestions+json" template="https://api.example.com/suggestions">
+        <Param name="q" value="{searchTerms}"/>
+    </Url>
+    <Url type="text/html" method="GET" template="https://www.example.com/search">
+        <Param name="q" value="{searchTerms}"/>
+        <Param name="source" value="search-box"/>
+    </Url>
+    <Url type="application/x-moz-keywordsearch" method="GET" template="https://www.example.com/search">
+        <Param name="q" value="{searchTerms}"/>
+        <Param name="source" value="keyword"/>
+    </Url>
+    <SearchForm>https://www.example.com/search</SearchForm>
+</SearchPlugin>
