@@ -1,13 +1,21 @@
-var EXPORTED_SYMBOLS = ["SearchSettings"];
 
-const { classes: Cc, interfaces: Ci, utils: Cu, results: Cr } = Components;
+if (typeof require == "function") {
+    var { Cc, Ci, Cu, Cr, CC } = require("chrome");
+    // Classy, Jetpack...
+    // Steal Iterator from Services.jsm since Jetpack sees fit not to
+    // provide it.
+    var { Iterator } = Cu.import("resource://gre/modules/Services.jsm");
+}
+else {
+    var { classes: Cc, interfaces: Ci, utils: Cu, results: Cr, Constructor: CC } = Components;
+}
 
 // Import the Services module.
 Cu.import("resource://gre/modules/Services.jsm");
 
-const XMLHttpRequest = Components.Constructor("@mozilla.org/xmlextras/xmlhttprequest;1");
+const XMLHttpRequest = CC("@mozilla.org/xmlextras/xmlhttprequest;1");
 
-const SupportsString = Components.Constructor("@mozilla.org/supports-string;1", "nsISupportsString");
+const SupportsString = CC("@mozilla.org/supports-string;1", "nsISupportsString");
 function Prefs(branch, defaults) {
     this.constructor = Prefs; // Ends up Object otherwise... Why?
 
@@ -326,6 +334,8 @@ const SearchSettings = {
      * Must be called at shutdown or when the add-on is disabled or
      * uninstalled.
      *
+     * Automatically called when loaded as an Add-on SDK module.
+     *
      * @param {string} reason The reason that cleanup is required. Must
      *    be one of:
      *
@@ -367,3 +377,10 @@ const SearchSettings = {
         }
     }
 };
+
+if (typeof require == "function")
+    require("unload").when(SearchSettings.cleanup.bind(SearchSettings));
+
+var EXPORTED_SYMBOLS = ["SearchSettings"];
+if (typeof exports == "object")
+    exports.SearchSettings = SearchSettings;

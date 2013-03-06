@@ -1,0 +1,9 @@
+{
+  "name": "example-engine-extension",
+  "fullName": "Example Engine Extension",
+  "description": "Example extension which changes search engine defaults",
+  "id": "example-search-pref-extension@mozilla.com",
+  "author": "Kris Maglione",
+  "license": "MPL 2.0",
+  "version": "0.1"
+}
